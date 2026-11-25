@@ -2186,6 +2186,138 @@ html.cmdk-open{overflow:hidden}
 </style>
 </head>
 <body>
+<script>
+/* Camadas, versão estática (GitHub Pages): Tutor com um modelo pequeno no navegador
+   e voz do próprio navegador. Só entra no site publicado fora do Claude. */
+(function(){
+'use strict';
+window.CAMADAS_ESTATICO=true;
+var LIB='vendor/web-llm/index.js';
+var MODELOS={grande:['Qwen3.5-2B','pouco mais de 1 GB'],pequeno:['Qwen3.5-0.8B','cerca de 0,5 GB']};
+var SYS='Você é o Tutor do Camadas, um guia brasileiro e independente sobre IA local (modelos abertos rodando no computador ou no celular). '+
+  'Responda sempre em português do Brasil, de forma curta: até seis frases ou uma lista curta. Use números no formato brasileiro. '+
+  'Use apenas os fatos do guia que vêm junto da pergunta. Se a resposta não estiver neles, diga que o guia não tem esse dado e indique a ferramenta do site mais próxima: '+
+  'Seu aparelho, reconhecido; Vai caber?; Já tenho este computador; Roda no meu celular?; Qual máquina para mim?. Não invente preços, medições, nomes de produtos nem leis.';
+var T={eng:null,id:null,carregando:null};
+function q(s,r){return (r||document).querySelector(s)}
+function qa(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))}
+function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+function norm(s){return String(s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'')}
+
+/* ---------- escolha do modelo pelo aparelho */
+function adaptador(){try{return navigator.gpu?navigator.gpu.requestAdapter():Promise.resolve(null)}catch(e){return Promise.resolve(null)}}
+function escolhe(ad){
+  var dm=navigator.deviceMemory||0,f16=!!(ad.features&&ad.features.has&&ad.features.has('shader-f16'));
+  var m=dm&&dm<8?MODELOS.pequeno:MODELOS.grande;
+  return {id:m[0]+(f16?'-q4f16_1-MLC':'-q4f32_1-MLC'),nome:m[0].replace('-',' '),tam:m[1]};
+}
+
+/* ---------- fatos do guia mais ligados à pergunta, para caber na janela do modelo */
+var PARADAS=' a o e de da do das dos em no na nos nas um uma uns umas para por com que se ou como qual quais quanto quanta quantos e eu meu minha mais menos ao aos os as ser sao tem ter isso esse essa este esta pra pro'.split(' ');
+function recorta(pack,pergunta,lim){
+  var linhas=String(pack||'').split('\n').filter(function(l){return /^- /.test(l)});
+  var ws=norm(pergunta).replace(/[^a-z0-9.,]+/g,' ').split(' ').filter(function(w){return w.length>2&&PARADAS.indexOf(w)<0});
+  var sc=linhas.map(function(l,i){var n=norm(l),s=0;ws.forEach(function(w){if(n.indexOf(w)>=0)s+=Math.min(w.length,8)});return {l:l,s:s,i:i}});
+  sc.sort(function(a,b){return b.s-a.s||a.i-b.i});
+  var out=[],tam=0;
+  for(var k=0;k<sc.length;k++){if(sc[k].s===0&&out.length>=4)break;if(tam+sc[k].l.length>lim)continue;out.push(sc[k]);tam+=sc[k].l.length}
+  out.sort(function(a,b){return a.i-b.i});
+  return out.map(function(x){return x.l}).join('\n');
+}
+function semPensar(t){return String(t||'').replace(/<think>[\s\S]*?(<\/think>|$)/g,'').replace(/^\s+/,'')}
+
+/* ---------- carregar e responder */
+function ativar(ad,info,prog){
+  if(T.eng)return Promise.resolve(T.eng);
+  if(T.carregando)return T.carregando;
+  T.carregando=import(new URL(LIB,document.baseURI).href).then(function(lib){
+    return lib.CreateMLCEngine(info.id,{initProgressCallback:function(p){if(prog)prog(p)}})
+  }).then(function(eng){T.eng=eng;T.id=info.id;return eng},function(e){T.carregando=null;throw e});
+  return T.carregando;
+}
+async function sample(turns,opt){
+  opt=opt||{};
+  if(!T.eng){var er=new Error('modelo não carregado');er.code='not_granted';throw er}
+  var C=window.CAMADAS||{},ult=turns[turns.length-1].content||'',i=ult.lastIndexOf('Pergunta: '),perg=i>=0?ult.slice(i+10):ult;
+  var nivel=C.LVN&&C.LV?'Nível de leitura escolhido: '+C.LVN[C.LV.n]+(C.lvDesc?' ('+C.lvDesc(C.LV.n)+')':'')+'. Ajuste a profundidade a esse nível.':'';
+  var fatos=recorta(C.D&&C.D.pack,perg,2600);
+  var msgs=[{role:'system',content:SYS},{role:'user',content:'Fatos do guia:\n'+fatos+'\n\n'+nivel+'\n\nPergunta: '+perg}];
+  var txt='',sig=opt.signal;
+  var chunks=await T.eng.chat.completions.create({messages:msgs,stream:true,temperature:0.3,max_tokens:600,extra_body:{enable_thinking:false}});
+  for await(var ch of chunks){
+    if(sig&&sig.aborted){try{T.eng.interruptGenerate()}catch(e){}var ec=new Error('cancelado');ec.code='cancelled';throw ec}
+    var d=ch.choices&&ch.choices[0]&&ch.choices[0].delta;if(d&&d.content)txt+=d.content;
+    if(opt.onText)opt.onText({text:semPensar(txt)});
+  }
+  return {text:semPensar(txt),truncated:false};
+}
+
+/* ---------- painel do Tutor */
+function montar(api){
+  var off=q('#pr-off');if(!off)return;var span=q('span',off);
+  function msg(h){if(span)span.innerHTML=h}
+  off.hidden=false;
+  if(!navigator.gpu){
+    msg('Nesta versão do site, o Tutor roda no seu próprio aparelho e precisa de WebGPU, que este navegador não oferece. Experimente o Chrome ou o Edge atualizados, no computador ou no Android. As ferramentas do guia respondem às mesmas contas.');
+    return}
+  adaptador().then(function(ad){
+    if(!ad){msg('Nesta versão do site, o Tutor roda no seu próprio aparelho, mas o navegador não liberou a placa de vídeo para ele. As ferramentas do guia respondem às mesmas contas.');return}
+    var info=escolhe(ad);
+    msg('Nesta versão do site, o Tutor roda no seu próprio aparelho: nada do que você pergunta sai dele. Na primeira vez, ele baixa um modelo de IA ('+esc(info.nome)+', '+esc(info.tam)+') e guarda no navegador para as próximas visitas. É um modelo pequeno: responde com os fatos do guia, de forma simples.'+
+      ' <button type="button" class="btn-s" id="pr-ativa">Ativar o Tutor<\/button> <span class="pr-prog" id="pr-prog" role="status"><\/span>');
+    var b=q('#pr-ativa'),pg=q('#pr-prog');
+    b.addEventListener('click',function(){
+      b.disabled=true;pg.textContent='Preparando…';
+      ativar(ad,info,function(p){var pc=Math.round((p.progress||0)*100);pg.textContent=pc>0&&pc<100?'Baixando e preparando o modelo: '+pc+'%':'Preparando o modelo…'}).then(function(){
+        api.usar(sample);off.hidden=true;q('#pr-form').hidden=false;q('#pr-tools').hidden=false;var sg=q('#pr-sug');if(sg)sg.hidden=false;
+        var lv=q('#pr-lv');if(lv)lv.textContent='Respostas de um modelo pequeno ('+info.nome+') rodando no seu aparelho, a partir dos fatos do guia. Confira os números importantes.';
+        api.prWire();var t=q('#pr-q');if(t)t.focus();
+      },function(e){b.disabled=false;b.textContent='Tentar de novo';
+        pg.textContent='Não consegui carregar o modelo neste aparelho'+(e&&e.message?' ('+String(e.message).slice(0,140)+')':'')+'. O resto do site funciona normalmente.'});
+    });
+  });
+}
+
+/* ---------- voz do navegador: ouvir os resumos e perguntar falando */
+function voz(){
+  if('speechSynthesis' in window&&window.SpeechSynthesisUtterance){
+    var cur=null;
+    function para(){if(cur){cur.classList.remove('on');cur.textContent='Ouvir';cur=null}}
+    qa('.essen > div').forEach(function(box){var k=q('.essen-k',box);if(!k||q('.say',k))return;
+      var b=document.createElement('button');b.type='button';b.className='say';b.textContent='Ouvir';k.appendChild(b);
+      b.addEventListener('click',function(){
+        if(cur===b){speechSynthesis.cancel();para();return}
+        speechSynthesis.cancel();para();cur=b;b.classList.add('on');b.textContent='Parar';
+        var txt=qa('p:not(.essen-k)',box).map(function(p){return p.textContent}).join(' ').replace(/\s+/g,' ').trim();
+        var u=new SpeechSynthesisUtterance(txt);u.lang='pt-BR';
+        var vs=speechSynthesis.getVoices().filter(function(v){return /^pt(-|_)BR/i.test(v.lang)});if(vs.length)u.voice=vs[0];
+        u.onend=u.onerror=function(){if(cur===b)para()};speechSynthesis.speak(u);
+      });
+    });
+  }
+  var SR=window.SpeechRecognition||window.webkitSpeechRecognition,form=q('#pr-form'),ta=q('#pr-q');
+  if(SR&&form&&ta&&!q('.mic',form)){
+    var mic=document.createElement('button');mic.type='button';mic.className='mic';mic.setAttribute('aria-label','Perguntar falando');
+    mic.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21"/><\/svg>';
+    form.insertBefore(mic,q('#pr-send'));
+    var rec=null,base='';
+    mic.addEventListener('click',function(){
+      if(rec){rec.stop();return}
+      try{rec=new SR()}catch(e){rec=null;return}
+      rec.lang='pt-BR';rec.interimResults=true;rec.continuous=false;base=ta.value.trim();
+      rec.onresult=function(ev){var fin='',par='';for(var i=ev.resultIndex;i<ev.results.length;i++){var r=ev.results[i];if(r.isFinal)fin+=r[0].transcript;else par+=r[0].transcript}
+        if(fin)base=(base+' '+fin).trim();ta.value=(base+' '+par).trim()};
+      rec.onend=rec.onerror=function(){mic.classList.remove('on');rec=null};
+      mic.classList.add('on');try{rec.start()}catch(e){mic.classList.remove('on');rec=null}
+    });
+  }
+}
+
+window.CAMADAS_LOCAL={tutor:{montar:montar,sample:sample,recorta:recorta},voz:voz};
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',voz);else setTimeout(voz,0);
+})();
+
+</script>
 
 <header class="topbar"><div class="topbar-in gut">
  <a class="brand" href="#inicio"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span class="brand-t"><b class="wordmark">Camadas</b><span>IA local explicada</span></span></a>
@@ -2788,7 +2920,7 @@ html.cmdk-open{overflow:hidden}
 <div class="essen"><span class="gl gl1" aria-hidden="true"><i class=""></i><i class=""></i><i class="on"></i></span><div><p class="essen-k">Em poucas palavras</p><p>Cada preço do guia tem data. Toda semana, uma conferência automática busca os preços de novo e soma ao histórico de cada máquina. Marque um preço-alvo e o guia avisa quando a máquina ficar abaixo dele.</p><p class="ana"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.6 10.8c.7.6 1.1 1.4 1.1 2.2h5c0-.8.4-1.6 1.1-2.2A6 6 0 0 0 12 3z"/></svg><span><b>Analogia:</b> é como anotar na geladeira o preço do café a cada ida ao mercado: com o tempo, dá para ver quando vale comprar.</span></p></div></div>
 <div class="pt-alert" id="pt-alert" hidden></div>
 <div class="panel pt-last"><div class="pt-h"><h3>Última conferência semanal</h3><span class="meta" id="pt-when"></span></div>
- <div id="pt-last"><p class="msg">As conferências semanais de preço não aparecem nesta versão do site. Os preços abaixo trazem a data em que foram conferidos.</p></div></div>
+ <div id="pt-last"><p class="msg">A primeira conferência semanal de preços roda na segunda-feira, 30/11/2026, e aparece aqui no mesmo dia.</p></div></div>
 <div class="panel pt-hist xpad">
  <div class="pt-row"><div class="fld"><label for="pt-maq">Máquina</label><select id="pt-maq"><option value="nb-comum">Notebook comum com 16 GB</option><option value="pc-3060">PC com RTX 3060 12 GB usada</option><option value="nb-rtx5060">Notebook gamer com RTX 5060</option><option value="pc-5060ti">PC com RTX 5060 Ti 16 GB</option><option value="mini-m6-16">Mac mini M6 16 GB</option><option value="pc-5070ti">PC com RTX 5070 Ti 16 GB</option><option value="pc-3090">PC com RTX 3090 usada</option><option value="mini-m6-32">Mac mini M6 32 GB</option><option value="rtx3090x2">PC com 2 RTX 3090 usadas</option><option value="flowz13">ASUS ROG Flow Z13</option><option value="mini-pro64">Mac mini M5 Pro</option><option value="ryzen395">Mini PC Ryzen AI Max+ 395</option><option value="pgx">Lenovo ThinkStation PGX</option><option value="spark">NVIDIA DGX Spark</option><option value="studio-ultra96">Mac Studio M5 Ultra 96 GB</option><option value="studio-max">Mac Studio M5 Max</option><option value="rtx5090">PC com 1 RTX 5090</option><option value="mbp-max">MacBook Pro 16 M5 Max</option><option value="pro5000">PC com RTX PRO 5000</option><option value="studio-ultra256">Mac Studio M5 Ultra 256 GB</option><option value="pro6000">PC com RTX PRO 6000</option><option value="rtx5090x2">PC com 2 RTX 5090</option></select></div>
  <div class="fld"><label for="pt-alvo">Avise quando ficar abaixo de</label><span class="mwrap" data-u="R$"><input id="pt-alvo" type="text" inputmode="decimal" placeholder="valor"></span></div>
@@ -3011,9 +3143,9 @@ mlx_lm.generate --model mlx-community/NOME-DO-MODELO-4bit --prompt &quot;Olá&qu
 <div class="panel pr" id="pr">
  <div class="pr-log" id="pr-log" aria-live="polite">
   <div class="pr-empty" id="pr-empty">
-   <p>Pergunte qualquer coisa sobre IA local. O Tutor faz a conta de memória e velocidade, consulta as máquinas e os registros da comunidade. As respostas usam o seu acesso ao Claude.</p>
-   <div class="pr-sug" id="pr-sug"><button type="button">O que é um modelo MoE, explicado de forma simples?</button><button type="button">O Qwen3.5 122B cabe no Lenovo PGX com 64 mil tokens de contexto?</button><button type="button">Vale mais um Mac Studio M5 Ultra ou duas caixas GB10?</button><button type="button">Por onde começo a aprender IA local sem gastar nada?</button></div>
-   <p class="state" id="pr-off" hidden><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 11v5.5M12 7.8v.2"/></svg><span>O Tutor não está disponível nesta versão do site. As ferramentas respondem às mesmas contas.</span></p>
+   <p>Pergunte qualquer coisa sobre IA local. Para contas de memória e velocidade, as ferramentas do guia são mais precisas que o Tutor.</p>
+   <div class="pr-sug" id="pr-sug"><button type="button">O que é um modelo MoE, explicado de forma simples?</button><button type="button">Quanta memória um modelo de 9B pede em 4 bits?</button><button type="button">Qual roda mais rápido o GPT-oss-120b: o Mac Studio M5 Max ou o DGX Spark?</button><button type="button">Por onde começo a aprender IA local sem gastar nada?</button></div>
+   <p class="state" id="pr-off" hidden><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 11v5.5M12 7.8v.2"/></svg><span>Nesta versão do site, o Tutor roda no seu próprio aparelho. As ferramentas do guia respondem às mesmas contas.</span></p>
   </div>
  </div>
  <form class="pr-form" id="pr-form" hidden><label class="vh" for="pr-q">Sua pergunta</label><textarea id="pr-q" rows="1" placeholder="Pergunte sobre conceitos, memória, preços ou instalação…"></textarea><button class="btn-s" id="pr-send" type="submit">Perguntar</button></form>
@@ -3650,7 +3782,7 @@ function setNivel(n,quiet){
   n=Math.max(1,Math.min(3,Math.round(+n)||1));LV.n=n;document.documentElement.setAttribute('data-nivel',String(n));store('camadas.nivel',n);
   $$('.tlv-b,.lvb').forEach(function(b){b.setAttribute('aria-pressed',String(+b.dataset.setNivel===n))});
   $$('.lyr').forEach(function(s){openLyr(s,+s.dataset.lvl<=n)});
-  var t=$('#pr-lv');if(t)t.textContent='Respostas no nível '+LVN[n]+'. Geradas pelo Claude a partir dos dados da plataforma; confira os números importantes.';
+  var t=$('#pr-lv');if(t)t.textContent='Respostas no nível '+LVN[n]+'. '+(window.CAMADAS_LOCAL?'Geradas por um modelo pequeno no seu aparelho, a partir dos fatos do guia':'Geradas pelo Claude a partir dos dados da plataforma')+'; confira os números importantes.';
   var lv=$('#lv-live');if(lv&&!quiet)lv.textContent='Nível de leitura: '+LVN[n]+'. '+(n===1?'Os blocos práticos e técnicos ficam fechados; abra cada um quando quiser.':n===2?'Blocos práticos abertos; os técnicos ficam fechados.':'Todos os blocos abertos.');
 }
 function initLevels(){
@@ -3730,12 +3862,25 @@ async function authors(ids){
 }
 function who(id){if(SEEDS[id])return SEEDS[id];if(id===RT.id)return 'Você';return RT.names[id]||'Alguém da comunidade'}
 function readOnlyNote(form){var p=document.createElement('p');p.className='state';p.innerHTML='<span>Seu acesso a esta plataforma é só de leitura. Para registrar, peça ao dono acesso de colaborador.</span>';form.parentNode.insertBefore(p,form)}
+/* versão estática (GitHub Pages): cópia dos registros em comunidade.json */
+var EST=null;
+function estatico(){if(!window.CAMADAS_ESTATICO)return null;if(!EST)EST=fetch('comunidade.json',{cache:'no-cache'}).then(function(r){return r.ok?r.json():null}).catch(function(){return null});return EST}
+function dmyIso(iso){var p=String(iso||'').slice(0,10).split('-');return p.length===3?p[2]+'/'+p[1]+'/'+p[0]:'data não informada'}
 function board(name,opts){
   var root=$('#'+name);if(!root)return;
   var st={docs:[],items:[],loaded:false,unsub:null,busy:false};BOARDS[name]=st;
   var stateEl=$('.state',root),form=$('form',root),msg=$('.msg',root);
   function setState(kind,text){if(!text){stateEl.hidden=true;return}stateEl.hidden=false;stateEl.className='state'+(kind==='err'?' err':'');$('span',stateEl).textContent=text}
-  if(!RT.db){setState('info',opts.offline);if(form)form.hidden=true;opts.render(root,[]);return}
+  if(!RT.db){if(form)form.hidden=true;var est=estatico();
+    if(!est){setState('info',opts.offline);opts.render(root,[]);return}
+    setState('info','Carregando…');
+    est.then(function(snap){var docs=snap&&Array.isArray(snap[name])?snap[name]:null;
+      if(!docs){setState('info',opts.offline);opts.render(root,[]);return}
+      var items=[];docs.forEach(function(d){(Array.isArray(d.itens)?d.itens:[]).forEach(function(it){if(it&&typeof it==='object')items.push(Object.assign({},it,{_u:d.id}))})});
+      st.items=items;st.loaded=true;
+      setState('info',(items.length?'Registros copiados em '+dmyIso(snap.copiado)+'.':'Ainda não há registros aqui.')+' Nesta versão do site, a lista é só para leitura.');
+      opts.render(root,items)});
+    return}
   setState('info','Carregando…');
   var timer=setTimeout(function(){if(!st.loaded)setState('err','Não consegui carregar agora. Recarregue a página para tentar de novo.')},10000);
   try{
@@ -3917,9 +4062,14 @@ async function prAsk(q){
 async function initTutor(){
   var box=$('#pr');if(!box)return;
   var s=null;try{s=window.claude&&window.claude.use?await window.claude.use('sample'):null}catch(e){s=null}
-  if(!s){$('#pr-off').hidden=false;$('#pr-form').hidden=true;$('#pr-tools').hidden=true;var sg=$('#pr-sug');if(sg)sg.hidden=true;return}
+  if(!s){$('#pr-off').hidden=false;$('#pr-form').hidden=true;$('#pr-tools').hidden=true;var sg=$('#pr-sug');if(sg)sg.hidden=true;
+    /* versão estática: Tutor com um modelo pequeno no navegador do visitante */
+    if(window.CAMADAS_LOCAL&&window.CAMADAS_LOCAL.tutor)window.CAMADAS_LOCAL.tutor.montar({prWire:prWire,usar:function(f){PR.sample=f;PR.tools=false}});
+    return}
   PR.sample=s;try{var lim=await s.limits();PR.tools=!!(lim&&lim.tools)}catch(e){PR.tools=false}
-  $('#pr-off').hidden=true;$('#pr-form').hidden=false;
+  $('#pr-off').hidden=true;$('#pr-form').hidden=false;prWire();
+}
+function prWire(){
   $('#pr-form').addEventListener('submit',function(e){e.preventDefault();if(PR.ctl){PR.ctl.abort();return}prAsk($('#pr-q').value)});
   $('#pr-q').addEventListener('keydown',function(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();if(!PR.ctl)prAsk($('#pr-q').value)}});
   $$('#pr-sug button').forEach(function(b){b.addEventListener('click',function(){prAsk(b.textContent)})});
@@ -4731,7 +4881,11 @@ function initPrecos(){
     var a=alertsGet().filter(function(x){return x.maq!==sel.value});a.push({maq:sel.value,alvo:Math.round(v),criado:new Date().toISOString().slice(0,10)});alertsSet(a);msg.className='msg ok';msg.textContent='Aviso criado neste navegador.';q('#pt-alvo').value='';ptAlerts(true)});
   var ul=q('#pt-avisos');if(ul)ul.addEventListener('click',function(e){var b=e.target.closest('button[data-rm]');if(!b)return;var a=alertsGet();a.splice(+b.dataset.rm,1);alertsSet(a);ptAlerts(true)});
   ptAlerts();
-  getDb().then(function(db){if(!db)return;try{db.collection('conferencias').onSnapshot(function(snap){
+  getDb().then(function(db){
+    if(!db){if(window.CAMADAS_ESTATICO)fetch('comunidade.json',{cache:'no-cache'}).then(function(r){return r.ok?r.json():null}).then(function(sn){
+      var cf=sn&&Array.isArray(sn.conferencias)?sn.conferencias:[];if(!cf.length)return;
+      PT.docs=cf.filter(function(x){return Array.isArray(x.itens)}).sort(function(a,b){return String(a.data||a.id).localeCompare(String(b.data||b.id))});ptLast();ptHist();ptAlerts()}).catch(function(){});return}
+    try{db.collection('conferencias').onSnapshot(function(snap){
     PT.docs=snap.docs.map(function(d){var x=d.data()||{};x.id=d.id;return x}).filter(function(x){return Array.isArray(x.itens)}).sort(function(a,b){return String(a.data||a.id).localeCompare(String(b.data||b.id))});
     ptLast();ptHist();ptAlerts();},function(){})}catch(e){}});
 }
