@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://dinodied28.github.io/Camadas/sitemap.xml

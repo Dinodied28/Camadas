@@ -1,7 +1,18 @@
 # Camadas · IA local explicada
 
-**Acesse o site: https://dinodied28.github.io/Camadas/**
+Site: https://dinodied28.github.io/Camadas/
 
-Plataforma independente que explica a inteligência artificial local em três níveis de leitura: o que é, como funciona, quanto custa no Brasil e o que dizem os testes.
+Guia independente e gratuito, em português, sobre a inteligência artificial que roda no próprio aparelho, do celular ao estúdio.
 
-Site estático: tudo está em `index.html`. Os arquivos `ia-mini*.json` são o modelo minúsculo do capítulo "Uma IA rodando aqui". `comunidade.json` traz a cópia dos registros da comunidade (medições, preços e conferências), só para leitura. `vendor/web-llm` é a biblioteca WebLLM (Apache-2.0) que roda o Tutor no navegador do visitante. Nenhum dado do visitante sai do navegador.
+- 63 capítulos em 11 trilhas, cada um com endereço próprio e três níveis de leitura (Essencial, Prática e Técnica).
+- Ferramentas que rodam no navegador: reconhecimento do aparelho, “Vai caber?”, escolha e comparação de máquinas, custos e importação.
+- Preços do Brasil com fonte e data, conferidos toda semana.
+- Tutor que roda no aparelho de quem pergunta, sem servidor.
+
+**Independência:** sem anúncios, sem links de afiliado e sem patrocínio. Regras: https://dinodied28.github.io/Camadas/independencia/
+
+**Privacidade:** sem cookies e sem contagem de visitas. O que as ferramentas leem do aparelho fica no navegador. Detalhes: https://dinodied28.github.io/Camadas/privacidade/
+
+**Correções e sugestões:** abra um problema em https://github.com/Dinodied28/Camadas/issues
+
+Licenças de terceiros: letras IBM Plex Sans, Space Grotesk e JetBrains Mono sob a SIL Open Font License 1.1; WebLLM sob Apache-2.0 (vendor/web-llm/LICENSE).
