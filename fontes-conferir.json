@@ -1,0 +1,846 @@
+{
+ "gerado": "2026-11-26",
+ "total": 74,
+ "fontes": [
+  {
+   "url": "https://aclanthology.org/2026.propor-1.30/",
+   "texto": "ACL Anthology",
+   "paginas": [
+    {
+     "titulo": "Transcrever áudio e gerar voz",
+     "endereco": "https://semnuvem.com.br/transcrever-audio-ia-local/"
+    }
+   ]
+  },
+  {
+   "url": "https://alternativeto.net/software/ollama/news/",
+   "texto": "AlternativeTo",
+   "paginas": [
+    {
+     "titulo": "Gerar imagens no seu computador",
+     "endereco": "https://semnuvem.com.br/gerar-imagens-ia-local/"
+    },
+    {
+     "titulo": "Para onde o setor está indo",
+     "endereco": "https://semnuvem.com.br/tendencias-ia-local/"
+    },
+    {
+     "titulo": "IA local para programar",
+     "endereco": "https://semnuvem.com.br/ia-local-para-programar/"
+    }
+   ]
+  },
+  {
+   "url": "https://anythingllm.com",
+   "texto": "anythingllm.com",
+   "paginas": [
+    {
+     "titulo": "Conversar com seus documentos",
+     "endereco": "https://semnuvem.com.br/conversar-com-documentos-ia-local/"
+    }
+   ]
+  },
+  {
+   "url": "https://apps.apple.com/app/draw-things/id6444050820",
+   "texto": "App Store",
+   "paginas": [
+    {
+     "titulo": "Gerar imagens no seu computador",
+     "endereco": "https://semnuvem.com.br/gerar-imagens-ia-local/"
+    },
+    {
+     "titulo": "IA local no celular",
+     "endereco": "https://semnuvem.com.br/ia-local-no-celular/"
+    },
+    {
+     "titulo": "Para onde o setor está indo",
+     "endereco": "https://semnuvem.com.br/tendencias-ia-local/"
+    }
+   ]
+  },
+  {
+   "url": "https://blogs.nvidia.com/blog/rtx-ai-garage-flux-2-comfyui",
+   "texto": "NVIDIA",
+   "paginas": [
+    {
+     "titulo": "Gerar imagens no seu computador",
+     "endereco": "https://semnuvem.com.br/gerar-imagens-ia-local/"
+    }
+   ]
+  },
+  {
+   "url": "https://botmonster.com/ai/best-local-image-generation-models-2026/",
+   "texto": "Botmonster",
+   "paginas": [
+    {
+     "titulo": "Gerar imagens no seu computador",
+     "endereco": "https://semnuvem.com.br/gerar-imagens-ia-local/"
+    }
+   ]
+  },
+  {
+   "url": "https://botmonster.com/ai/how-to-set-up-flux-2-dev-locally-in-2026/",
+   "texto": "Botmonster",
+   "paginas": [
+    {
+     "titulo": "Gerar imagens no seu computador",
+     "endereco": "https://semnuvem.com.br/gerar-imagens-ia-local/"
+    }
+   ]
+  },
+  {
+   "url": "https://build.nvidia.com/rtx/visual-gen-ai",
+   "texto": "NVIDIA",
+   "paginas": [
+    {
+     "titulo": "Gerar imagens no seu computador",
+     "endereco": "https://semnuvem.com.br/gerar-imagens-ia-local/"
+    }
+   ]
+  },
+  {
+   "url": "https://canaltech.com.br/notebook/o-pesadelo-voltou-notebooks-devem-vir-com-apenas-8-gb-de-ram-em-2026/",
+   "texto": "Canaltech",
+   "paginas": [
+    {
+     "titulo": "IA local no notebook",
+     "endereco": "https://semnuvem.com.br/ia-local-no-notebook/"
+    },
+    {
+     "titulo": "NPU no PC: o que ela faz",
+     "endereco": "https://semnuvem.com.br/npu-pc-ia-local/"
+    }
+   ]
+  },
+  {
+   "url": "https://dev.to/jangwook_kim_e31e7291ad98/on-device-ai-2026-developer-guide-to-npus-and-edge-inference-39cl",
+   "texto": "DEV Community",
+   "paginas": [
+    {
+     "titulo": "NPU no PC: o que ela faz",
+     "endereco": "https://semnuvem.com.br/npu-pc-ia-local/"
+    }
+   ]
+  },
+  {
+   "url": "https://dev.to/jovan_chan_9500711396d4e6/amd-lemonade-local-llm-server-gpu-npu-inference-on-consumer-hardware-2026-guide-4d0c",
+   "texto": "DEV Community",
+   "paginas": [
+    {
+     "titulo": "Gerar imagens no seu computador",
+     "endereco": "https://semnuvem.com.br/gerar-imagens-ia-local/"
+    },
+    {
+     "titulo": "NPU no PC: o que ela faz",
+     "endereco": "https://semnuvem.com.br/npu-pc-ia-local/"
+    },
+    {
+     "titulo": "Transcrever áudio e gerar voz",
+     "endereco": "https://semnuvem.com.br/transcrever-audio-ia-local/"
+    }
+   ]
+  },
+  {
+   "url": "https://dev.to/jovan_chan_9500711396d4e6/continuedev-ollama-2026-local-ai-coding-setup-for-vs-code-and-jetbrains-with-no-api-key-1naa",
+   "texto": "DEV Community",
+   "paginas": [
+    {
+     "titulo": "IA local para programar",
+     "endereco": "https://semnuvem.com.br/ia-local-para-programar/"
+    }
+   ]
+  },
+  {
+   "url": "https://dev.to/jovan_chan_9500711396d4e6/faster-whisper-vs-whispercpp-vs-whisperx-2026-o29",
+   "texto": "DEV Community",
+   "paginas": [
+    {
+     "titulo": "Transcrever áudio e gerar voz",
+     "endereco": "https://semnuvem.com.br/transcrever-audio-ia-local/"
+    }
+   ]
+  },
+  {
+   "url": "https://dev.to/jovan_chan_9500711396d4e6/flux-vs-sdxl-vs-sd-35-which-to-run-in-2026-d86",
+   "texto": "DEV Community",
+   "paginas": [
+    {
+     "titulo": "Gerar imagens no seu computador",
+     "endereco": "https://semnuvem.com.br/gerar-imagens-ia-local/"
+    },
+    {
+     "titulo": "Para onde o setor está indo",
+     "endereco": "https://semnuvem.com.br/tendencias-ia-local/"
+    }
+   ]
+  },
+  {
+   "url": "https://dev.to/jovan_chan_9500711396d4e6/local-rag-in-2026-build-a-private-document-ai-that-never-leaves-your-machine-4ah7",
+   "texto": "DEV Community",
+   "paginas": [
+    {
+     "titulo": "Conversar com seus documentos",
+     "endereco": "https://semnuvem.com.br/conversar-com-documentos-ia-local/"
+    }
+   ]
+  },
+  {
+   "url": "https://dev.to/jovan_chan_9500711396d4e6/open-source-coding-agents-2026-which-one-to-run-5g14",
+   "texto": "DEV Community",
+   "paginas": [
+    {
+     "titulo": "IA local para programar",
+     "endereco": "https://semnuvem.com.br/ia-local-para-programar/"
+    }
+   ]
+  },
+  {
+   "url": "https://dev.to/jovan_chan_9500711396d4e6/open-webui-review-2026-52gp",
+   "texto": "DEV Community",
+   "paginas": [
+    {
+     "titulo": "Conversar com seus documentos",
+     "endereco": "https://semnuvem.com.br/conversar-com-documentos-ia-local/"
+    }
+   ]
+  },
+  {
+   "url": "https://devblogs.microsoft.com/foundry/accelerate-edge-ai-development-with-foundry-local/",
+   "texto": "Microsoft",
+   "paginas": [
+    {
+     "titulo": "Transcrever áudio e gerar voz",
+     "endereco": "https://semnuvem.com.br/transcrever-audio-ia-local/"
+    }
+   ]
+  },
+  {
+   "url": "https://devblogs.microsoft.com/foundry/foundry-local-meets-more-silicon/",
+   "texto": "Microsoft",
+   "paginas": [
+    {
+     "titulo": "NPU no PC: o que ela faz",
+     "endereco": "https://semnuvem.com.br/npu-pc-ia-local/"
+    }
+   ]
+  },
+  {
+   "url": "https://developers.google.com/ml-kit/genai",
+   "texto": "Google",
+   "paginas": [
+    {
+     "titulo": "IA local no celular",
+     "endereco": "https://semnuvem.com.br/ia-local-no-celular/"
+    },
+    {
+     "titulo": "Para onde o setor está indo",
+     "endereco": "https://semnuvem.com.br/tendencias-ia-local/"
+    },
+    {
+     "titulo": "Transcrever áudio e gerar voz",
+     "endereco": "https://semnuvem.com.br/transcrever-audio-ia-local/"
+    }
+   ]
+  },
+  {
+   "url": "https://docs.openwebui.com/alternatives/anythingllm/",
+   "texto": "Open WebUI",
+   "paginas": [
+    {
+     "titulo": "IA local no computador de mesa",
+     "endereco": "https://semnuvem.com.br/ia-local-no-computador/"
+    },
+    {
+     "titulo": "Transcrever áudio e gerar voz",
+     "endereco": "https://semnuvem.com.br/transcrever-audio-ia-local/"
+    },
+    {
+     "titulo": "Conversar com seus documentos",
+     "endereco": "https://semnuvem.com.br/conversar-com-documentos-ia-local/"
+    }
+   ]
+  },
+  {
+   "url": "https://en.kocpc.com.tw/?p=335",
+   "texto": "KoCPC",
+   "paginas": [
+    {
+     "titulo": "IA local no notebook",
+     "endereco": "https://semnuvem.com.br/ia-local-no-notebook/"
+    },
+    {
+     "titulo": "NPU no PC: o que ela faz",
+     "endereco": "https://semnuvem.com.br/npu-pc-ia-local/"
+    }
+   ]
+  },
+  {
+   "url": "https://github.com/a-ghorbani/pocketpal-ai",
+   "texto": "GitHub",
+   "paginas": [
+    {
+     "titulo": "IA local no celular",
+     "endereco": "https://semnuvem.com.br/ia-local-no-celular/"
+    }
+   ]
+  },
+  {
+   "url": "https://github.com/alibaba/MNN",
+   "texto": "GitHub",
+   "paginas": [
+    {
+     "titulo": "IA local no celular",
+     "endereco": "https://semnuvem.com.br/ia-local-no-celular/"
+    }
+   ]
+  },
+  {
+   "url": "https://github.com/ggml-org/Llama-Windows",
+   "texto": "GitHub",
+   "paginas": [
+    {
+     "titulo": "IA local no notebook",
+     "endereco": "https://semnuvem.com.br/ia-local-no-notebook/"
+    }
+   ]
+  },
+  {
+   "url": "https://github.com/ggml-org/Llama-macOS",
+   "texto": "GitHub",
+   "paginas": [
+    {
+     "titulo": "IA local no notebook",
+     "endereco": "https://semnuvem.com.br/ia-local-no-notebook/"
+    },
+    {
+     "titulo": "Quando não funciona",
+     "endereco": "https://semnuvem.com.br/ia-local-problemas-solucoes/"
+    }
+   ]
+  },
+  {
+   "url": "https://github.com/ggml-org/llama.vscode",
+   "texto": "GitHub",
+   "paginas": [
+    {
+     "titulo": "IA local para programar",
+     "endereco": "https://semnuvem.com.br/ia-local-para-programar/"
+    }
+   ]
+  },
+  {
+   "url": "https://github.com/ggml-org/whisper.cpp",
+   "texto": "GitHub",
+   "paginas": [
+    {
+     "titulo": "Transcrever áudio e gerar voz",
+     "endereco": "https://semnuvem.com.br/transcrever-audio-ia-local/"
+    }
+   ]
+  },
+  {
+   "url": "https://hashnode.com/blog/best-local-llm-for-coding",
+   "texto": "Hashnode",
+   "paginas": [
+    {
+     "titulo": "IA local para programar",
+     "endereco": "https://semnuvem.com.br/ia-local-para-programar/"
+    }
+   ]
+  },
+  {
+   "url": "https://insiderllm.com/guides/ollama-0-17-new-features/",
+   "texto": "InsiderLLM",
+   "paginas": [
+    {
+     "titulo": "Quando não funciona",
+     "endereco": "https://semnuvem.com.br/ia-local-problemas-solucoes/"
+    }
+   ]
+  },
+  {
+   "url": "https://jeffgeerling.com/blog/2026/power-on-your-mac-remotely",
+   "texto": "Jeff Geerling",
+   "paginas": [
+    {
+     "titulo": "Quando não funciona",
+     "endereco": "https://semnuvem.com.br/ia-local-problemas-solucoes/"
+    }
+   ]
+  },
+  {
+   "url": "https://kilo.ai/articles/coding-agents-for-vscode",
+   "texto": "Kilo",
+   "paginas": [
+    {
+     "titulo": "IA local para programar",
+     "endereco": "https://semnuvem.com.br/ia-local-para-programar/"
+    }
+   ]
+  },
+  {
+   "url": "https://korben.info/en/llama-llama-cpp-local-ai-no-command-line.html",
+   "texto": "Korben",
+   "paginas": [
+    {
+     "titulo": "Quando não funciona",
+     "endereco": "https://semnuvem.com.br/ia-local-problemas-solucoes/"
+    }
+   ]
+  },
+  {
+   "url": "https://lmstudio.ai/blog/introducing-lm-studio-bionic",
+   "texto": "LM Studio",
+   "paginas": [
+    {
+     "titulo": "Para onde o setor está indo",
+     "endereco": "https://semnuvem.com.br/tendencias-ia-local/"
+    },
+    {
+     "titulo": "IA local para programar",
+     "endereco": "https://semnuvem.com.br/ia-local-para-programar/"
+    }
+   ]
+  },
+  {
+   "url": "https://lmstudio.ai/download",
+   "texto": "LM Studio",
+   "paginas": [
+    {
+     "titulo": "IA local no computador de mesa",
+     "endereco": "https://semnuvem.com.br/ia-local-no-computador/"
+    },
+    {
+     "titulo": "IA local no notebook",
+     "endereco": "https://semnuvem.com.br/ia-local-no-notebook/"
+    }
+   ]
+  },
+  {
+   "url": "https://macmagazine.com.br/post/2026/03/04/como-o-macbook-air-com-chip-m5-se-diferencia-do-modelo-com-o-m4/",
+   "texto": "MacMagazine",
+   "paginas": [
+    {
+     "titulo": "IA local no notebook",
+     "endereco": "https://semnuvem.com.br/ia-local-no-notebook/"
+    }
+   ]
+  },
+  {
+   "url": "https://nimbalyst.com/blog/best-local-first-ai-coding-tools-2026",
+   "texto": "Nimbalyst",
+   "paginas": [
+    {
+     "titulo": "IA local para programar",
+     "endereco": "https://semnuvem.com.br/ia-local-para-programar/"
+    }
+   ]
+  },
+  {
+   "url": "https://ollama.com/download",
+   "texto": "Ollama",
+   "paginas": [
+    {
+     "titulo": "IA local no computador de mesa",
+     "endereco": "https://semnuvem.com.br/ia-local-no-computador/"
+    },
+    {
+     "titulo": "IA local no notebook",
+     "endereco": "https://semnuvem.com.br/ia-local-no-notebook/"
+    },
+    {
+     "titulo": "IA local para programar",
+     "endereco": "https://semnuvem.com.br/ia-local-para-programar/"
+    }
+   ]
+  },
+  {
+   "url": "https://pasqualepillitteri.it/pt/news/28208/voz-ia-local-texto-para-fala-transcricao",
+   "texto": "Pasquale Pillitteri",
+   "paginas": [
+    {
+     "titulo": "Transcrever áudio e gerar voz",
+     "endereco": "https://semnuvem.com.br/transcrever-audio-ia-local/"
+    }
+   ]
+  },
+  {
+   "url": "https://phoronix.com/news/amd-ryzen-ai-npus-linux-llms",
+   "texto": "Phoronix",
+   "paginas": [
+    {
+     "titulo": "NPU no PC: o que ela faz",
+     "endereco": "https://semnuvem.com.br/npu-pc-ia-local/"
+    }
+   ]
+  },
+  {
+   "url": "https://pub.towardsai.net/best-image-generation-model-for-small-gpus-18f83da22ef4",
+   "texto": "Towards AI",
+   "paginas": [
+    {
+     "titulo": "Gerar imagens no seu computador",
+     "endereco": "https://semnuvem.com.br/gerar-imagens-ia-local/"
+    }
+   ]
+  },
+  {
+   "url": "https://pureinfotech.com/microsoft-copilot-plus-pc-brand-disappearing/",
+   "texto": "Pureinfotech",
+   "paginas": [
+    {
+     "titulo": "NPU no PC: o que ela faz",
+     "endereco": "https://semnuvem.com.br/npu-pc-ia-local/"
+    }
+   ]
+  },
+  {
+   "url": "https://rentamac.io/flux-ai-mac/",
+   "texto": "Rentamac",
+   "paginas": [
+    {
+     "titulo": "Gerar imagens no seu computador",
+     "endereco": "https://semnuvem.com.br/gerar-imagens-ia-local/"
+    }
+   ]
+  },
+  {
+   "url": "https://ryzenai.docs.amd.com/en/latest/llm/overview.html",
+   "texto": "AMD",
+   "paginas": [
+    {
+     "titulo": "NPU no PC: o que ela faz",
+     "endereco": "https://semnuvem.com.br/npu-pc-ia-local/"
+    }
+   ]
+  },
+  {
+   "url": "https://shop.zimaspace.com/blogs/tech-ai-hub/best-local-coding-models-8gb-12gb-16gb-24gb-vram",
+   "texto": "ZimaSpace",
+   "paginas": [
+    {
+     "titulo": "IA local para programar",
+     "endereco": "https://semnuvem.com.br/ia-local-para-programar/"
+    }
+   ]
+  },
+  {
+   "url": "https://sindresorhus.com/imago",
+   "texto": "Sindre Sorhus",
+   "paginas": [
+    {
+     "titulo": "Gerar imagens no seu computador",
+     "endereco": "https://semnuvem.com.br/gerar-imagens-ia-local/"
+    }
+   ]
+  },
+  {
+   "url": "https://tech-insider.org/?p=13977",
+   "texto": "Tech Insider",
+   "paginas": [
+    {
+     "titulo": "Gerar imagens no seu computador",
+     "endereco": "https://semnuvem.com.br/gerar-imagens-ia-local/"
+    }
+   ]
+  },
+  {
+   "url": "https://tecnoblog.net/noticias/asus-zenbook-a16-estreia-snapdragon-x2-elite-extreme-no-brasil-veja-preco/",
+   "texto": "Tecnoblog",
+   "paginas": [
+    {
+     "titulo": "NPU no PC: o que ela faz",
+     "endereco": "https://semnuvem.com.br/npu-pc-ia-local/"
+    }
+   ]
+  },
+  {
+   "url": "https://tecnoblog.net/noticias/e-o-fim-do-copilot-pc-microsoft-abandona-silenciosamente-a-marca/",
+   "texto": "Tecnoblog",
+   "paginas": [
+    {
+     "titulo": "NPU no PC: o que ela faz",
+     "endereco": "https://semnuvem.com.br/npu-pc-ia-local/"
+    }
+   ]
+  },
+  {
+   "url": "https://tecnoblog.net/noticias/escassez-de-memoria-ram-impulsiona-lucros-recordes-das-fabricantes/",
+   "texto": "Tecnoblog",
+   "paginas": [
+    {
+     "titulo": "IA local no notebook",
+     "endereco": "https://semnuvem.com.br/ia-local-no-notebook/"
+    },
+    {
+     "titulo": "NPU no PC: o que ela faz",
+     "endereco": "https://semnuvem.com.br/npu-pc-ia-local/"
+    },
+    {
+     "titulo": "Para onde o setor está indo",
+     "endereco": "https://semnuvem.com.br/tendencias-ia-local/"
+    }
+   ]
+  },
+  {
+   "url": "https://tecnoblog.net/noticias/escassez-de-ram-vai-perdurar-alem-de-2026-diz-micron/",
+   "texto": "Tecnoblog",
+   "paginas": [
+    {
+     "titulo": "IA local no computador de mesa",
+     "endereco": "https://semnuvem.com.br/ia-local-no-computador/"
+    },
+    {
+     "titulo": "Para onde o setor está indo",
+     "endereco": "https://semnuvem.com.br/tendencias-ia-local/"
+    }
+   ]
+  },
+  {
+   "url": "https://tecnoblog.net/noticias/macbooks-com-chip-m5-sao-homologados-na-anatel/",
+   "texto": "Tecnoblog",
+   "paginas": [
+    {
+     "titulo": "IA local no notebook",
+     "endereco": "https://semnuvem.com.br/ia-local-no-notebook/"
+    }
+   ]
+  },
+  {
+   "url": "https://tecnoblog.net/noticias/snapdragon-x2-plus-e-o-novo-chip-da-qualcomm-para-pcs-com-windows-11/",
+   "texto": "Tecnoblog",
+   "paginas": [
+    {
+     "titulo": "NPU no PC: o que ela faz",
+     "endereco": "https://semnuvem.com.br/npu-pc-ia-local/"
+    }
+   ]
+  },
+  {
+   "url": "https://wccftech.com/amd-ryzen-ai-400-gorgon-point-launch-up-to-12-zen-5-cores-60-tops-70-percent-faster-vs-intel-at-same-tdp/",
+   "texto": "Wccftech",
+   "paginas": [
+    {
+     "titulo": "NPU no PC: o que ela faz",
+     "endereco": "https://semnuvem.com.br/npu-pc-ia-local/"
+    }
+   ]
+  },
+  {
+   "url": "https://whispernotes.app/pt-BR/blog/offline-speech-to-text-complete-guide",
+   "texto": "WhisperNotes",
+   "paginas": [
+    {
+     "titulo": "Transcrever áudio e gerar voz",
+     "endereco": "https://semnuvem.com.br/transcrever-audio-ia-local/"
+    }
+   ]
+  },
+  {
+   "url": "https://www.apple.com/pt/newsroom/2025/09/apples-foundation-models-framework-unlocks-new-intelligent-app-experiences/",
+   "texto": "Apple",
+   "paginas": [
+    {
+     "titulo": "IA local no celular",
+     "endereco": "https://semnuvem.com.br/ia-local-no-celular/"
+    },
+    {
+     "titulo": "Para onde o setor está indo",
+     "endereco": "https://semnuvem.com.br/tendencias-ia-local/"
+    }
+   ]
+  },
+  {
+   "url": "https://www.bitdoze.com/es/imagenes-ia-mac/",
+   "texto": "Bitdoze",
+   "paginas": [
+    {
+     "titulo": "Gerar imagens no seu computador",
+     "endereco": "https://semnuvem.com.br/gerar-imagens-ia-local/"
+    }
+   ]
+  },
+  {
+   "url": "https://www.buildmvpfast.com/blog/npu-local-ai-development-reality-check-2026",
+   "texto": "BuildMVPFast",
+   "paginas": [
+    {
+     "titulo": "NPU no PC: o que ela faz",
+     "endereco": "https://semnuvem.com.br/npu-pc-ia-local/"
+    },
+    {
+     "titulo": "Para onde o setor está indo",
+     "endereco": "https://semnuvem.com.br/tendencias-ia-local/"
+    }
+   ]
+  },
+  {
+   "url": "https://www.comfy.org",
+   "texto": "comfy.org",
+   "paginas": [
+    {
+     "titulo": "Gerar imagens no seu computador",
+     "endereco": "https://semnuvem.com.br/gerar-imagens-ia-local/"
+    }
+   ]
+  },
+  {
+   "url": "https://www.datacamp.com/blog/anythingllm",
+   "texto": "DataCamp",
+   "paginas": [
+    {
+     "titulo": "Conversar com seus documentos",
+     "endereco": "https://semnuvem.com.br/conversar-com-documentos-ia-local/"
+    }
+   ]
+  },
+  {
+   "url": "https://www.datacamp.com/pt/tutorial/lm-studio",
+   "texto": "DataCamp",
+   "paginas": [
+    {
+     "titulo": "Conversar com seus documentos",
+     "endereco": "https://semnuvem.com.br/conversar-com-documentos-ia-local/"
+    }
+   ]
+  },
+  {
+   "url": "https://www.datacamp.com/sv/blog/anythingllm",
+   "texto": "DataCamp",
+   "paginas": [
+    {
+     "titulo": "Conversar com seus documentos",
+     "endereco": "https://semnuvem.com.br/conversar-com-documentos-ia-local/"
+    }
+   ]
+  },
+  {
+   "url": "https://www.em.com.br/emfoco/?p=139823",
+   "texto": "Estado de Minas",
+   "paginas": [
+    {
+     "titulo": "IA local no celular",
+     "endereco": "https://semnuvem.com.br/ia-local-no-celular/"
+    }
+   ]
+  },
+  {
+   "url": "https://www.morphllm.com/ai-coding-assistant-open-source",
+   "texto": "Morph",
+   "paginas": [
+    {
+     "titulo": "IA local para programar",
+     "endereco": "https://semnuvem.com.br/ia-local-para-programar/"
+    }
+   ]
+  },
+  {
+   "url": "https://www.morphllm.com/best-ollama-models",
+   "texto": "Morph",
+   "paginas": [
+    {
+     "titulo": "IA local para programar",
+     "endereco": "https://semnuvem.com.br/ia-local-para-programar/"
+    }
+   ]
+  },
+  {
+   "url": "https://www.oficinadanet.com.br/noticias/68897-positivo-master-copilot-pc-brasil-intel-core-ultra-serie-3",
+   "texto": "Oficina da Net",
+   "paginas": [
+    {
+     "titulo": "NPU no PC: o que ela faz",
+     "endereco": "https://semnuvem.com.br/npu-pc-ia-local/"
+    }
+   ]
+  },
+  {
+   "url": "https://www.pcworld.com/article/3244476/microsoft-is-quietly-killing-its-copilot-pc-brand.html",
+   "texto": "PCWorld",
+   "paginas": [
+    {
+     "titulo": "NPU no PC: o que ela faz",
+     "endereco": "https://semnuvem.com.br/npu-pc-ia-local/"
+    }
+   ]
+  },
+  {
+   "url": "https://www.promptquorum.com/power-local-llm/draw-things-review",
+   "texto": "PromptQuorum",
+   "paginas": [
+    {
+     "titulo": "Gerar imagens no seu computador",
+     "endereco": "https://semnuvem.com.br/gerar-imagens-ia-local/"
+    }
+   ]
+  },
+  {
+   "url": "https://www.promptquorum.com/pt/power-local-llm/local-whisper-stt-comparison",
+   "texto": "PromptQuorum",
+   "paginas": [
+    {
+     "titulo": "Transcrever áudio e gerar voz",
+     "endereco": "https://semnuvem.com.br/transcrever-audio-ia-local/"
+    }
+   ]
+  },
+  {
+   "url": "https://www.qualcomm.com/developer/blog/2026/03/run-nexa-ai-agents-locally-on-snapdragon-pc-with-hexagon-npu",
+   "texto": "Qualcomm",
+   "paginas": [
+    {
+     "titulo": "NPU no PC: o que ela faz",
+     "endereco": "https://semnuvem.com.br/npu-pc-ia-local/"
+    }
+   ]
+  },
+  {
+   "url": "https://www.sitepoint.com/local-ai-coding-assistant-cursor-vs-vs-code-ollama-continue/",
+   "texto": "SitePoint",
+   "paginas": [
+    {
+     "titulo": "Quando não funciona",
+     "endereco": "https://semnuvem.com.br/ia-local-problemas-solucoes/"
+    }
+   ]
+  },
+  {
+   "url": "https://www.tapbit.com/pt/learn/article/ollama-cloud-pricing-privacy-open-model-business-20260903",
+   "texto": "Tapbit",
+   "paginas": [
+    {
+     "titulo": "Para onde o setor está indo",
+     "endereco": "https://semnuvem.com.br/tendencias-ia-local/"
+    },
+    {
+     "titulo": "Quando não funciona",
+     "endereco": "https://semnuvem.com.br/ia-local-problemas-solucoes/"
+    }
+   ]
+  },
+  {
+   "url": "https://www.tembo.io/blog/local-ai-coding-agent",
+   "texto": "Tembo",
+   "paginas": [
+    {
+     "titulo": "IA local para programar",
+     "endereco": "https://semnuvem.com.br/ia-local-para-programar/"
+    }
+   ]
+  },
+  {
+   "url": "https://www.windowscentral.com/microsoft/windows-11/the-copilot-pc-brand-is-dead-microsoft-and-pc-makers-quietly-pull-back-on-tarnished-windows-11-ai-pc-branding",
+   "texto": "Windows Central",
+   "paginas": [
+    {
+     "titulo": "NPU no PC: o que ela faz",
+     "endereco": "https://semnuvem.com.br/npu-pc-ia-local/"
+    },
+    {
+     "titulo": "Para onde o setor está indo",
+     "endereco": "https://semnuvem.com.br/tendencias-ia-local/"
+    }
+   ]
+  }
+ ]
+}
