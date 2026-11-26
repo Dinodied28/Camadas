@@ -15,4 +15,4 @@ Guia independente e gratuito, em português, sobre a inteligência artificial qu
 
 **Correções e sugestões:** abra um problema em https://github.com/Dinodied28/Camadas/issues
 
-Licenças de terceiros: letras IBM Plex Sans, Space Grotesk e JetBrains Mono sob a SIL Open Font License 1.1; WebLLM sob Apache-2.0 (vendor/web-llm/LICENSE).
+Licenças de terceiros: letras IBM Plex Sans, IBM Plex Mono e Newsreader sob a SIL Open Font License 1.1; Three.js sob MIT (aviso no próprio arquivo); WebLLM sob Apache-2.0 (vendor/web-llm/LICENSE).
