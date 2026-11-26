@@ -1,0 +1,2 @@
+As letras Sora, IBM Plex Sans e IBM Plex Mono são distribuídas sob a SIL Open Font License 1.1 (https://openfontlicense.org).
+O laboratório 3D da capa usa o Three.js (MIT, Copyright 2010-2023 Three.js Authors); o aviso de licença vai junto no próprio arquivo.
