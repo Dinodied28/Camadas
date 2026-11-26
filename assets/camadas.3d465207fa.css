@@ -2276,3 +2276,32 @@ html:not([data-ferramentas]) .cm-prog{display:none}
 @media print{.cm-top,.cm-foot,.cm-drawer,.cm-busca,.cm-side,.cm-pn,.cm-erro,.cm-skip,.rd{display:none!important}body{background:#fff;color:#000}.cm-main{padding:0}}
 .cm-com{display:inline-block;margin-left:6px;padding:1px 6px;border:1px solid var(--line);border-radius:999px;font:600 .7rem var(--f-label);letter-spacing:.03em;color:var(--muted);vertical-align:middle;white-space:nowrap}
 .fchip .c{opacity:1;color:inherit}
+.bx{margin:18px 0 28px;padding:18px;border:1px solid var(--line);border-radius:14px;background:var(--surface)}
+.bx>h2{margin-top:0}
+.bx-form{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.bx-form .fld{display:flex;flex-direction:column;gap:6px;min-width:0}
+.bx-form label{font:600 .85rem var(--f-label)}
+.bx-form select{min-height:44px;padding:8px 10px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink);font:inherit;max-width:100%}
+.bx-det{font-size:.85rem;color:var(--muted);margin:10px 0 0}
+.bx-sum{font-weight:600;margin:16px 0 10px}
+.bx-list{display:grid;gap:12px}
+.bx-card{padding:14px 16px;border-radius:12px;border:1px solid var(--line);min-width:0}
+.bx-card p{margin:6px 0}
+.bx-top{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}
+.bx-top h3{margin:0;font:700 1.05rem var(--f-display)}
+.bx-st{font:600 .75rem var(--f-label);padding:2px 9px;border-radius:999px;border:1px solid var(--line);white-space:nowrap;color:var(--ink)}
+.bx-sim{border-left:4px solid var(--accent)}.bx-sim .bx-st{border-color:var(--accent)}
+.bx-limite{border-left:4px solid var(--spark)}.bx-limite .bx-st{border-color:var(--spark)}
+.bx-nao{border-style:dashed}
+.bx-meta{font-size:.85rem;color:var(--muted)}
+.bx-lk,.bx-como{overflow-wrap:anywhere}
+.bx-como code{font-size:.85rem}
+.bx-cp{margin-left:4px}
+.bx-mais{margin:12px 0 0}
+.bx-tbl .bx-links{min-width:230px;line-height:1.7}
+.bx-tbl th .who{display:block;font-weight:400}
+.bx-inst{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:12px;margin:12px 0 20px}
+.bx-inst .panel{padding:14px 16px;min-width:0}
+.bx-inst h3{margin-top:0}
+.bx-inst ol{padding-left:20px;margin:8px 0 0}.bx-inst li{margin:6px 0}
+.bx-devs li,.bx-seg li{margin:8px 0}
