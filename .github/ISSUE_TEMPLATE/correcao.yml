@@ -1,0 +1,23 @@
+name: Avisar de um erro
+description: Um número errado, um preço desatualizado, um link quebrado ou um texto confuso.
+title: "[Correção] "
+labels: ["correção"]
+body:
+  - type: input
+    id: pagina
+    attributes:
+      label: Página
+      description: Cole o endereço da página.
+    validations:
+      required: true
+  - type: textarea
+    id: problema
+    attributes:
+      label: O que está errado
+    validations:
+      required: true
+  - type: input
+    id: fonte
+    attributes:
+      label: Fonte (opcional)
+      description: Um link que mostre o valor certo.

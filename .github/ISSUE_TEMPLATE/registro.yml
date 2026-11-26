@@ -1,0 +1,31 @@
+name: Registro para o site
+description: Preço que você viu, medição de velocidade ou o seu setup. O formulário do site preenche tudo.
+title: "[Registro] "
+labels: ["registro"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Obrigado por contribuir com o **Sem Nuvem**. Confira os dados e clique em **Create**.
+        Antes de aparecer no site, cada registro passa por uma conferência (preço plausível, loja, link e data).
+        Tudo aqui é público: não escreva nome completo, telefone, e-mail ou outros dados pessoais.
+  - type: input
+    id: tipo
+    attributes:
+      label: Tipo
+      description: "avistamentos (preço), medicoes (velocidade) ou setups"
+    validations:
+      required: true
+  - type: textarea
+    id: dados
+    attributes:
+      label: Dados
+      description: Preenchido pelo site. Só mude se algo estiver errado.
+      render: json
+    validations:
+      required: true
+  - type: textarea
+    id: comentario
+    attributes:
+      label: Comentário (opcional)
+      description: Algo que ajude a conferir, como a configuração exata ou o motivo de um preço fora do comum.

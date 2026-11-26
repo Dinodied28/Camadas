@@ -2275,3 +2275,4 @@ html:not([data-ferramentas]) .cm-prog{display:none}
 @media (prefers-reduced-motion: reduce){*,*::before,*::after{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
 @media print{.cm-top,.cm-foot,.cm-drawer,.cm-busca,.cm-side,.cm-pn,.cm-erro,.cm-skip,.rd{display:none!important}body{background:#fff;color:#000}.cm-main{padding:0}}
 .cm-com{display:inline-block;margin-left:6px;padding:1px 6px;border:1px solid var(--line);border-radius:999px;font:600 .7rem var(--f-label);letter-spacing:.03em;color:var(--muted);vertical-align:middle;white-space:nowrap}
+.fchip .c{opacity:1;color:inherit}
