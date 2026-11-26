@@ -4,7 +4,7 @@ Site: https://dinodied28.github.io/Camadas/
 
 Guia independente e gratuito, em português, sobre a inteligência artificial que roda no próprio aparelho, do celular ao estúdio.
 
-- 63 capítulos em 11 trilhas, cada um com endereço próprio e três níveis de leitura (Essencial, Prática e Técnica).
+- 64 capítulos em 11 trilhas, cada um com endereço próprio e três níveis de leitura (Essencial, Prática e Técnica).
 - Ferramentas que rodam no navegador: reconhecimento do aparelho, “Vai caber?”, escolha e comparação de máquinas, custos e importação.
 - Preços do Brasil com fonte e data, conferidos toda semana.
 - Tutor que roda no aparelho de quem pergunta, sem servidor.
