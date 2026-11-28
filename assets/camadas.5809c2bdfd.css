@@ -2704,3 +2704,6 @@ a.sn-tile:hover .sn-il img,a.sn-dev:hover .sn-il img,a.sn-uso:hover .sn-il img{t
 a.sn-tile:hover .sn-il img,a.sn-dev:hover .sn-il img,a.sn-uso:hover .sn-il img,.cm-card a:hover,.cm-pn-a:hover{transform:none}
 }
 @media print{.cm-top,.cm-foot,.cm-drawer,.cm-busca,.cm-side,.cm-pn,.cm-erro,.cm-skip,.rd,.sn-barra-baixo,.cm-ch-3d,.cm-lv-w{display:none!important}body{background:#fff;color:#000;padding:0}.cm-main{padding:0}}
+html.js #bx-app[hidden]{display:block!important}
+@media (min-width:720px){html.js #cmpq{min-height:1560px}html.js #bx-app{min-height:2140px}html.js .panel.svp{min-height:500px}}
+@media (min-width:1240px){html.js #cmpq{min-height:1640px}html.js .panel.svp{min-height:520px}}
